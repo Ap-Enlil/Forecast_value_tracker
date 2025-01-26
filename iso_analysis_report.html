@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ISO Load Analysis</title>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .tab {
+            overflow: hidden;
+            border-bottom: 1px solid #404040;
+        }
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            color: #80c0ff;
+            font-size: 16px;
+        }
+        .tab button:hover {
+            background-color: #303030;
+        }
+        .tab button.active {
+            background-color: #202020;
+            border-bottom: 2px solid #80c0ff;
+        }
+        .tabcontent {
+            display: none;
+            padding: 20px 0;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #404040;
+            border-radius: 4px;
+        }
+        h1 {
+            color: #80c0ff;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>ISO Load Analysis Dashboard</h1>
+    
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'ERCOT')">ERCOT</button><button class="tablinks" onclick="openTab(event, 'CAISO')">CAISO</button>
+    </div>
+
+    
+    <div id="ERCOT" class="tabcontent">
+        <img src="ERCOT_dashboard.png" alt="ERCOT Dashboard">
+    </div>
+    <div id="CAISO" class="tabcontent">
+        <img src="CAISO_dashboard.png" alt="CAISO Dashboard">
+    </div>
+
+    <script>
+        function openTab(evt, isoName) {
+            // Hide all tab content
+            document.querySelectorAll('.tabcontent').forEach(tab => {
+                tab.style.display = 'none';
+            });
+            
+            // Remove active class from buttons
+            document.querySelectorAll('.tablinks').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(isoName).style.display = 'block';
+            evt.currentTarget.classList.add('active');
+        }
+        
+        // Open first tab by default
+        document.querySelector('.tablinks').click();
+    </script>
+</body>
+</html>
